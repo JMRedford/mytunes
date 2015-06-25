@@ -14,11 +14,12 @@ describe('App', function() {
         title:'test song 2'
       }
     ]);
-    app = new AppModel({library: fakeSongs});
+    var queue = new SongQueue();
+    app = new AppModel({library: fakeSongs, queue:queue});
   });
 
   it('creates a song queue on initialize', function(){
-    expect(app.get('songQueue')).to.be.an.instanceof(SongQueue);
+    expect(app.get('queue')).to.be.an.instanceof(SongQueue);
   });
 
   it('sets the current song when a "play" event is fired', function(){
